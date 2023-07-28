@@ -468,3 +468,13 @@ end)
 Mics1:NewKeybind("Keybind", "Press F To visible the gui", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
+
+local VirtualUser = game:GetService("VirtualUser")
+
+Mics1:NewButton("Anti AFK", "Anti AFK For U", function()
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        VirtualUser:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait(1)
+        VirtualUser:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end)
